@@ -49,10 +49,10 @@ export const Header: React.FC = () => {
 
   return (
     <header className="fixed top-2 left-2 right-2 md:top-3 md:left-3 md:right-3 lg:top-4 lg:left-4 lg:right-4 z-50 font-anek-bangla">
-      <div className={`backdrop-blur-2xl border border-white/50 rounded-2xl shadow-2xl transition-all duration-300 ${
+      <div className={`backdrop-blur-2xl border border-white/50 rounded-2xl shadow-2xl transition-all duration-500 ${
         scrolled 
-          ? 'bg-white/95 shadow-white/20' 
-          : 'bg-white shadow-white/15 border-white/60'
+          ? 'bg-white/70 shadow-white/10 border-white/30' 
+          : 'bg-white shadow-white/20 border-white/60'
       }`}>
         <div className="container mx-auto px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-2.5 flex items-center justify-between">
           {/* Logo */}

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBasket, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -24,10 +25,10 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
 
   return (
     <header className="fixed top-6 left-6 right-6 z-50 font-anek-bangla">
-      <div className={`backdrop-blur-2xl border border-white/30 rounded-full shadow-2xl transition-all duration-300 ${
+      <div className={`backdrop-blur-2xl border border-white/40 rounded-full shadow-2xl transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/80 shadow-white/20' 
-          : 'bg-gradient-to-r from-white/20 via-white/30 to-white/20 shadow-white/10'
+          ? 'bg-white/85 shadow-white/20' 
+          : 'bg-white/70 shadow-white/15 border-white/50'
       }`}>
         <div className="container mx-auto px-8 py-5 flex items-center justify-between">
           {/* Simple Logo */}
@@ -39,13 +40,13 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
 
           {/* Centered Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-10 absolute left-1/2 transform -translate-x-1/2">
-            <a href="#home" className="text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg">
+            <a href="#home" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg">
               Home
             </a>
             
             <div className="relative">
               <button
-                className="flex items-center text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg"
+                className="flex items-center text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg"
                 onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
               >
                 ক্যাটাগরি <ChevronDown className="ml-1 h-4 w-4" />
@@ -66,13 +67,13 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
               )}
             </div>
             
-            <a href="#what-we-offer" className="text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg">
+            <a href="#what-we-offer" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg">
               সেবা
             </a>
-            <a href="#contact" className="text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg">
+            <a href="#contact" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg">
               যোগাযোগ
             </a>
-            <a href="#about" className="text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg">
+            <a href="#about" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg">
               About
             </a>
           </nav>
@@ -83,9 +84,9 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
               variant="ghost"
               size="icon"
               onClick={onBasketClick}
-              className="hidden lg:flex hover:bg-white/40 backdrop-blur-sm rounded-full w-16 h-16"
+              className="hidden lg:flex hover:bg-[#FFA300]/20 backdrop-blur-sm rounded-full w-20 h-20 transition-all duration-300"
             >
-              <ShoppingBasket className="h-8 w-8 text-[#FFA300]" />
+              <ShoppingBasket className="h-10 w-10 text-[#FFA300]" />
             </Button>
 
             {/* Mobile Menu Button */}

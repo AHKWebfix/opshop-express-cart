@@ -1,3 +1,4 @@
+
 import React from 'react';
 export const Footer = () => {
   return <footer className="backdrop-blur-xl bg-gradient-to-br from-slate-100/80 via-gray-50/70 to-white/60 border-t-2 border-white/40 py-20 font-anek-bangla relative">
@@ -67,8 +68,8 @@ export const Footer = () => {
           <div className="text-center">
             <p className="text-gray-600">
               Design & Developed by{' '}
-              <a href="https://ahasan.online" target="_blank" rel="noopener noreferrer" className="text-[#FFA300] hover:text-[#FF8C00] font-semibold transition-colors duration-300 hover:underline">
-                Ahasanul Haque Khul
+              <a href="https://wa.me/8801881591312" target="_blank" rel="noopener noreferrer" className="text-[#FFA300] hover:text-[#FF8C00] font-semibold transition-colors duration-300 hover:underline">
+                Ahasanul Haque Khairul
               </a>
             </p>
           </div>

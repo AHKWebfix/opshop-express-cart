@@ -43,7 +43,6 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
             <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 relative inline-block">
               Our <span className="text-[#FFA300] relative">
                 Products
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FFA300] to-[#FF8C00] rounded-full"></div>
               </span>
             </h2>
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#FFA300]/10 rounded-full blur-xl"></div>
@@ -59,28 +58,28 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
         <div className="flex flex-col md:flex-row gap-4 mb-12 justify-center items-center">
           <div className="relative">
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-full md:w-56 h-12 bg-white/90 backdrop-blur-sm border-2 border-gray-200 hover:border-[#FFA300]/50 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl">
+              <SelectTrigger className="w-full md:w-56 h-12 sm:h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/40 hover:border-[#FFA300]/70 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-base sm:text-lg text-gray-800">
                 <SelectValue placeholder="Select Category" />
               </SelectTrigger>
               <SelectContent className="rounded-xl border-2 border-gray-200 shadow-xl">
-                <SelectItem value="all" className="rounded-lg">All Categories</SelectItem>
-                <SelectItem value="smartphone" className="rounded-lg">Smartphone</SelectItem>
-                <SelectItem value="laptop" className="rounded-lg">Laptop</SelectItem>
-                <SelectItem value="accessories" className="rounded-lg">Accessories</SelectItem>
-                <SelectItem value="components" className="rounded-lg">Components</SelectItem>
+                <SelectItem value="all" className="rounded-lg font-semibold text-base">All Categories</SelectItem>
+                <SelectItem value="smartphone" className="rounded-lg font-semibold text-base">Smartphone</SelectItem>
+                <SelectItem value="laptop" className="rounded-lg font-semibold text-base">Laptop</SelectItem>
+                <SelectItem value="accessories" className="rounded-lg font-semibold text-base">Accessories</SelectItem>
+                <SelectItem value="components" className="rounded-lg font-semibold text-base">Components</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="relative">
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-full md:w-56 h-12 bg-white/90 backdrop-blur-sm border-2 border-gray-200 hover:border-[#FFA300]/50 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl">
+              <SelectTrigger className="w-full md:w-56 h-12 sm:h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/40 hover:border-[#FFA300]/70 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-base sm:text-lg text-gray-800">
                 <SelectValue placeholder="Sort By" />
               </SelectTrigger>
               <SelectContent className="rounded-xl border-2 border-gray-200 shadow-xl">
-                <SelectItem value="name" className="rounded-lg">Name</SelectItem>
-                <SelectItem value="price-low" className="rounded-lg">Price: Low to High</SelectItem>
-                <SelectItem value="price-high" className="rounded-lg">Price: High to Low</SelectItem>
+                <SelectItem value="name" className="rounded-lg font-semibold text-base">Price</SelectItem>
+                <SelectItem value="price-low" className="rounded-lg font-semibold text-base">Price: Low to High</SelectItem>
+                <SelectItem value="price-high" className="rounded-lg font-semibold text-base">Price: High to Low</SelectItem>
               </SelectContent>
             </Select>
           </div>

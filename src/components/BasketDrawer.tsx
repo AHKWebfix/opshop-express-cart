@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Minus, Plus, Trash2, ShoppingBag, Package, X } from 'lucide-react';
+import { Minus, Plus, Trash2, ShoppingBag, Package } from 'lucide-react';
 import { Product } from '../types/Product';
 import { toast } from '@/hooks/use-toast';
 
@@ -56,21 +55,13 @@ export const BasketDrawer: React.FC<BasketDrawerProps> = ({
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-full sm:max-w-lg md:max-w-xl bg-white border-l border-gray-300 overflow-y-auto font-anek-bangla">
         <SheetHeader className="pb-6 border-b border-gray-200 sticky top-0 bg-white z-50 pt-4">
-          <SheetTitle className="text-2xl font-bold flex items-center justify-between text-gray-900 font-anek-bangla">
+          <SheetTitle className="text-2xl font-bold flex items-center text-gray-900 font-anek-bangla">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-[#FFA300]/20 rounded-xl">
                 <ShoppingBag className="h-6 w-6 text-[#FFA300]" />
               </div>
               <span className="font-anek-bangla">Shopping ঝুড়ি</span>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onClose}
-              className="h-10 w-10 rounded-full hover:bg-gray-100 flex-shrink-0 z-50 relative"
-            >
-              <X className="h-5 w-5" />
-            </Button>
           </SheetTitle>
         </SheetHeader>
 
@@ -98,14 +89,14 @@ export const BasketDrawer: React.FC<BasketDrawerProps> = ({
                     </div>
                     
                     <div className="flex-1 min-w-0 space-y-2">
-                      <h4 className="font-bold text-gray-900 text-base sm:text-lg leading-tight font-anek-bangla line-clamp-2">
+                      <h4 className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg leading-tight font-anek-bangla break-words">
                         {item.name}
                       </h4>
                       <div className="space-y-1">
-                        <p className="text-[#FFA300] font-bold text-lg sm:text-xl font-anek-bangla">
+                        <p className="text-[#FFA300] font-bold text-base sm:text-lg lg:text-xl font-anek-bangla">
                           ৳{item.price.toLocaleString()}
                         </p>
-                        <p className="text-gray-800 text-base sm:text-lg font-semibold font-anek-bangla">
+                        <p className="text-gray-800 text-sm sm:text-base lg:text-lg font-semibold font-anek-bangla">
                           মোট: <span className="text-gray-900 font-bold">৳{(item.price * item.quantity).toLocaleString()}</span>
                         </p>
                       </div>

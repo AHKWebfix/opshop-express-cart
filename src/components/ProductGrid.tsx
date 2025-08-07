@@ -53,9 +53,6 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
             Discover our premium collection of cutting-edge technology and accessories, 
             carefully curated for the modern lifestyle
           </p>
-          <div className="mt-8 flex justify-center">
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#FFA300] to-transparent rounded-full"></div>
-          </div>
         </div>
 
         {/* Enhanced Filters */}

@@ -1,14 +1,15 @@
+
 import React from 'react';
 import { Phone, MessageCircle, Facebook, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-rose-50/25 via-white/50 to-pink-50/20 relative">
-      {/* Contact section specific background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-rose-100/15 via-white/35 to-pink-100/20"></div>
-      <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-rose-200/20 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-20 w-52 h-52 bg-gradient-to-br from-pink-200/15 to-transparent rounded-full blur-2xl"></div>
+    <section id="contact" className="py-24 bg-gradient-to-br from-rose-100/80 via-pink-50/70 to-red-50/60 relative">
+      {/* Contact section specific background with stronger colors */}
+      <div className="absolute inset-0 bg-gradient-to-r from-rose-200/25 via-pink-100/35 to-red-100/30"></div>
+      <div className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-br from-rose-300/25 via-pink-300/20 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-60 h-60 bg-gradient-to-br from-pink-300/20 via-rose-300/15 to-transparent rounded-full blur-2xl"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
@@ -22,7 +23,7 @@ export const ContactSection = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {/* WhatsApp */}
             <Button 
-              className="h-auto p-6 bg-white/80 hover:bg-white/90 backdrop-blur-xl border border-white/40 text-gray-700 hover:text-[#FFA300] rounded-2xl group shadow-lg"
+              className="h-auto p-6 bg-white/90 hover:bg-white/95 backdrop-blur-xl border border-white/50 text-gray-700 hover:text-[#FFA300] rounded-2xl group shadow-lg"
               variant="outline"
             >
               <div className="flex items-center space-x-4">
@@ -38,7 +39,7 @@ export const ContactSection = () => {
 
             {/* Phone */}
             <Button 
-              className="h-auto p-6 bg-white/80 hover:bg-white/90 backdrop-blur-xl border border-white/40 text-gray-700 hover:text-[#FFA300] rounded-2xl group shadow-lg"
+              className="h-auto p-6 bg-white/90 hover:bg-white/95 backdrop-blur-xl border border-white/50 text-gray-700 hover:text-[#FFA300] rounded-2xl group shadow-lg"
               variant="outline"
             >
               <div className="flex items-center space-x-4">
@@ -61,7 +62,7 @@ export const ContactSection = () => {
               <Button 
                 variant="outline" 
                 size="icon"
-                className="bg-white/80 hover:bg-white/90 backdrop-blur-xl border border-white/40 hover:border-blue-500 rounded-full shadow-lg"
+                className="bg-white/90 hover:bg-white/95 backdrop-blur-xl border border-white/50 hover:border-blue-500 rounded-full shadow-lg"
               >
                 <Facebook className="h-5 w-5 text-blue-600" />
               </Button>
@@ -69,7 +70,7 @@ export const ContactSection = () => {
               <Button 
                 variant="outline" 
                 size="icon"
-                className="bg-white/80 hover:bg-white/90 backdrop-blur-xl border border-white/40 hover:border-pink-500 rounded-full shadow-lg"
+                className="bg-white/90 hover:bg-white/95 backdrop-blur-xl border border-white/50 hover:border-pink-500 rounded-full shadow-lg"
               >
                 <Instagram className="h-5 w-5 text-pink-600" />
               </Button>

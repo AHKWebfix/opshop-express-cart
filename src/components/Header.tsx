@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBasket, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -10,12 +9,26 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const categories = ['Smartphone', 'Laptop', 'Accessories', 'Computer Components'];
 
   return (
     <header className="fixed top-6 left-6 right-6 z-50 font-anek-bangla">
-      <div className="backdrop-blur-2xl bg-gradient-to-r from-white/15 via-white/25 to-white/15 border border-white/20 rounded-full shadow-2xl shadow-white/10">
+      <div className={`backdrop-blur-2xl border border-white/30 rounded-full shadow-2xl transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/80 shadow-white/20' 
+          : 'bg-gradient-to-r from-white/20 via-white/30 to-white/20 shadow-white/10'
+      }`}>
         <div className="container mx-auto px-8 py-5 flex items-center justify-between">
           {/* Simple Logo */}
           <div className="flex items-center">
@@ -39,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
               </button>
               
               {isCategoriesOpen && (
-                <div className="absolute top-full left-0 mt-3 backdrop-blur-2xl bg-white/20 border border-white/30 rounded-2xl shadow-xl min-w-48 py-3">
+                <div className="absolute top-full left-0 mt-3 backdrop-blur-2xl bg-white/90 border border-white/30 rounded-2xl shadow-xl min-w-48 py-3">
                   {categories.map((category) => (
                     <a
                       key={category}
@@ -64,15 +77,15 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
             </a>
           </nav>
 
-          {/* Right Side - Basket Button */}
+          {/* Right Side - Bigger Basket Button */}
           <div className="flex items-center">
             <Button
               variant="ghost"
               size="icon"
               onClick={onBasketClick}
-              className="hidden lg:flex hover:bg-white/30 backdrop-blur-sm rounded-full w-12 h-12"
+              className="hidden lg:flex hover:bg-white/40 backdrop-blur-sm rounded-full w-16 h-16"
             >
-              <ShoppingBasket className="h-6 w-6 text-[#FFA300]" />
+              <ShoppingBasket className="h-8 w-8 text-[#FFA300]" />
             </Button>
 
             {/* Mobile Menu Button */}
@@ -89,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden backdrop-blur-2xl bg-white/15 border-t border-white/20 rounded-b-3xl mt-2">
+          <div className="lg:hidden backdrop-blur-2xl bg-white/90 border-t border-white/30 rounded-b-3xl mt-2">
             <div className="container mx-auto px-8 py-6 space-y-4">
               <a href="#home" className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg">
                 Home

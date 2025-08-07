@@ -1,16 +1,15 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
-    <section id="home" className="pt-36 pb-24 relative overflow-hidden font-anek-bangla">
-      {/* Enhanced Glass Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/15 to-white/10"></div>
-      <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-[#FFA300]/20 via-white/15 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-10 w-56 h-56 bg-gradient-to-br from-white/25 via-[#FFA300]/15 to-transparent rounded-full blur-2xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-white/10 via-[#FFA300]/10 to-white/10 rounded-full blur-3xl"></div>
+    <section id="home" className="pt-36 pb-24 relative overflow-hidden font-anek-bangla bg-gradient-to-br from-white/60 via-orange-50/40 to-white/50">
+      {/* Hero-specific background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-100/30 via-white/40 to-orange-50/20"></div>
+      <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-[#FFA300]/15 via-orange-200/20 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-10 w-56 h-56 bg-gradient-to-br from-white/40 via-[#FFA300]/10 to-transparent rounded-full blur-2xl"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-orange-100/20 via-[#FFA300]/5 to-white/20 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-5xl mx-auto">

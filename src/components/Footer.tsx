@@ -3,8 +3,13 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <footer className="backdrop-blur-xl bg-white/15 border-t border-white/20 py-16 font-anek-bangla">
-      <div className="container mx-auto px-4">
+    <footer className="backdrop-blur-xl bg-gradient-to-br from-gray-100/60 via-white/40 to-slate-100/50 border-t border-white/30 py-16 font-anek-bangla relative">
+      {/* Footer specific background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-200/20 via-white/30 to-slate-200/15"></div>
+      <div className="absolute top-10 left-1/4 w-64 h-64 bg-gradient-to-br from-gray-300/10 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-gradient-to-br from-slate-300/15 to-transparent rounded-full blur-2xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-4 gap-10">
           {/* Logo & Description */}
           <div className="md:col-span-2">
@@ -44,7 +49,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/30 mt-16 pt-10 text-center">
+        <div className="border-t border-white/40 mt-16 pt-10 text-center">
           <p className="text-gray-700 text-lg">
             © {new Date().getFullYear()} Opshop BD. All rights reserved.
           </p>

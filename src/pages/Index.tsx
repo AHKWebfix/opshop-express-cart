@@ -50,10 +50,11 @@ const Index = () => {
   const totalItems = basketItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-3xl font-anek-bangla">
-      {/* Glass background overlay */}
-      <div className="fixed inset-0 bg-gradient-to-br from-white/30 via-white/10 to-white/5 pointer-events-none"></div>
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,163,0,0.1),transparent_70%)] pointer-events-none"></div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30 font-anek-bangla">
+      {/* Enhanced layered background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-white/40 via-transparent to-orange-50/20 pointer-events-none"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,163,0,0.08),transparent_50%)] pointer-events-none"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.05),transparent_50%)] pointer-events-none"></div>
       
       <div className="relative z-10">
         <Header onBasketClick={() => setIsBasketOpen(true)} />

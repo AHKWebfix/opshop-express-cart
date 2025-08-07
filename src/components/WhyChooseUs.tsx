@@ -22,8 +22,11 @@ export const WhyChooseUs = () => {
   ];
 
   return (
-    <section id="what-we-offer" className="py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-50/30 to-white/30"></div>
+    <section id="what-we-offer" className="py-20 relative bg-gradient-to-br from-blue-50/30 via-white/50 to-purple-50/20">
+      {/* Why Choose Us specific background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 via-white/30 to-indigo-50/20"></div>
+      <div className="absolute top-10 left-20 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-20 w-48 h-48 bg-gradient-to-br from-purple-200/15 to-transparent rounded-full blur-2xl"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
@@ -39,7 +42,7 @@ export const WhyChooseUs = () => {
               key={index}
               className="text-center group"
             >
-              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 border border-white/40 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:bg-white/90">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-[#FFA300]/10 rounded-full mb-6 group-hover:bg-[#FFA300]/20 transition-colors">
                   <feature.icon className="h-8 w-8 text-[#FFA300]" />
                 </div>

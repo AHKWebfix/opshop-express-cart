@@ -32,10 +32,10 @@ export const Header: React.FC = () => {
     <header className="fixed top-2 left-2 right-2 md:top-3 md:left-3 md:right-3 lg:top-4 lg:left-4 lg:right-4 z-50 font-anek-bangla">
       <div className={`backdrop-blur-2xl border border-white/50 rounded-2xl shadow-2xl transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/85 shadow-white/20' 
-          : 'bg-white/98 shadow-white/15 border-white/60'
+          ? 'bg-white/95 shadow-white/20' 
+          : 'bg-white shadow-white/15 border-white/60'
       }`}>
-        <div className="container mx-auto px-3 md:px-4 lg:px-6 py-2 md:py-2.5 lg:py-3 flex items-center justify-between">
+        <div className="container mx-auto px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-2.5 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
             <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900">
@@ -108,7 +108,7 @@ export const Header: React.FC = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="hover:bg-white/30 backdrop-blur-sm rounded-full w-9 h-9"
+                className="hover:bg-gray-100 rounded-full w-9 h-9"
               >
                 {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
               </Button>
@@ -119,7 +119,7 @@ export const Header: React.FC = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="hidden md:flex lg:hidden hover:bg-white/30 backdrop-blur-sm rounded-full w-10 h-10 ml-2"
+              className="hidden md:flex lg:hidden hover:bg-gray-100 rounded-full w-10 h-10 ml-2"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -128,7 +128,7 @@ export const Header: React.FC = () => {
 
         {/* Mobile/Tablet Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden backdrop-blur-2xl bg-white/95 border-t border-white/30 rounded-b-2xl mt-1">
+          <div className="lg:hidden backdrop-blur-2xl bg-white/95 border-t border-gray-200/30 rounded-b-2xl mt-1">
             <div className="container mx-auto px-3 md:px-4 py-3 md:py-4 space-y-2 md:space-y-3">
               <a 
                 href="#home" 

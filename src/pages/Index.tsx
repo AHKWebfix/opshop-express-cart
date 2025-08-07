@@ -50,26 +50,32 @@ const Index = () => {
   const totalItems = basketItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50/20 to-white">
-      <Header onBasketClick={() => setIsBasketOpen(true)} />
-      <HeroSection />
-      <ProductGrid onAddToBasket={addToBasket} />
-      <WhyChooseUs />
-      <AboutSection />
-      <ContactSection />
-      <Footer />
+    <div className="min-h-screen bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-3xl font-anek-bangla">
+      {/* Glass background overlay */}
+      <div className="fixed inset-0 bg-gradient-to-br from-white/30 via-white/10 to-white/5 pointer-events-none"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,163,0,0.1),transparent_70%)] pointer-events-none"></div>
       
-      <FloatingBasket 
-        itemCount={totalItems}
-        onClick={() => setIsBasketOpen(true)}
-      />
-      
-      <BasketDrawer
-        isOpen={isBasketOpen}
-        onClose={() => setIsBasketOpen(false)}
-        items={basketItems}
-        onUpdateQuantity={updateQuantity}
-      />
+      <div className="relative z-10">
+        <Header onBasketClick={() => setIsBasketOpen(true)} />
+        <HeroSection />
+        <ProductGrid onAddToBasket={addToBasket} />
+        <WhyChooseUs />
+        <AboutSection />
+        <ContactSection />
+        <Footer />
+        
+        <FloatingBasket 
+          itemCount={totalItems}
+          onClick={() => setIsBasketOpen(true)}
+        />
+        
+        <BasketDrawer
+          isOpen={isBasketOpen}
+          onClose={() => setIsBasketOpen(false)}
+          items={basketItems}
+          onUpdateQuantity={updateQuantity}
+        />
+      </div>
     </div>
   );
 };

@@ -30,8 +30,8 @@ const Index = () => {
     });
     
     toast({
-      title: "Added to basket",
-      description: `${product.name} has been added to your basket`,
+      title: "ঝুড়িতে যোগ করা হয়েছে",
+      description: `${product.name} আপনার ঝুড়িতে যোগ করা হয়েছে`,
     });
   };
 
@@ -50,12 +50,12 @@ const Index = () => {
   const totalItems = basketItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-slate-50 font-anek-bangla">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-slate-50 font-anek-bangla overflow-x-hidden">
       {/* Enhanced layered background with clearer separation */}
       <div className="fixed inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-50/40 pointer-events-none"></div>
       
-      <div className="relative z-10">
-        <Header onBasketClick={() => setIsBasketOpen(true)} />
+      <div className="relative z-10 w-full">
+        <Header />
         <HeroSection />
         <ProductGrid onAddToBasket={addToBasket} />
         <WhyChooseUs />

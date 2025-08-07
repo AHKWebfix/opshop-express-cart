@@ -3,11 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-interface HeaderProps {
-  onBasketClick: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
+export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -33,41 +29,41 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
   };
 
   return (
-    <header className="fixed top-3 left-3 right-3 md:top-4 md:left-4 md:right-4 lg:top-6 lg:left-6 lg:right-6 z-50 font-anek-bangla">
-      <div className={`backdrop-blur-2xl border border-white/40 rounded-full shadow-2xl transition-all duration-300 ${
+    <header className="fixed top-2 left-2 right-2 md:top-3 md:left-3 md:right-3 lg:top-4 lg:left-4 lg:right-4 z-50 font-anek-bangla">
+      <div className={`backdrop-blur-2xl border border-white/50 rounded-2xl shadow-2xl transition-all duration-300 ${
         scrolled 
           ? 'bg-white/85 shadow-white/20' 
-          : 'bg-white/95 shadow-white/15 border-white/50'
+          : 'bg-white/98 shadow-white/15 border-white/60'
       }`}>
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 py-2 md:py-3 lg:py-4 flex items-center justify-between">
+        <div className="container mx-auto px-3 md:px-4 lg:px-6 py-2 md:py-2.5 lg:py-3 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">
+            <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900">
               Opshop <span className="text-[#FFA300]">BD</span>
             </h1>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-10 absolute left-1/2 transform -translate-x-1/2">
-            <a href="#home" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 absolute left-1/2 transform -translate-x-1/2">
+            <a href="#home" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base">
               Home
             </a>
             
             <div className="relative">
               <button
-                className="flex items-center text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg"
+                className="flex items-center text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base"
                 onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
               >
                 ক্যাটাগরি <ChevronDown className="ml-1 h-4 w-4" />
               </button>
               
               {isCategoriesOpen && (
-                <div className="absolute top-full left-0 mt-3 backdrop-blur-2xl bg-[#FFA300]/95 border border-white/30 rounded-2xl shadow-xl min-w-48 py-3 z-50">
+                <div className="absolute top-full left-0 mt-2 backdrop-blur-2xl bg-[#FFA300]/95 border border-[#FFA300]/30 rounded-xl shadow-xl min-w-48 py-2 z-50">
                   {categories.map((category) => (
                     <a
                       key={category.name}
                       href={category.href}
-                      className="block px-5 py-3 text-white hover:text-gray-200 hover:bg-white/20 transition-colors font-medium"
+                      className="block px-4 py-2.5 text-white hover:text-gray-100 hover:bg-white/20 transition-colors font-medium cursor-pointer"
                       onClick={() => setIsCategoriesOpen(false)}
                     >
                       {category.name}
@@ -77,13 +73,13 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
               )}
             </div>
             
-            <a href="#what-we-offer" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg">
+            <a href="#what-we-offer" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base">
               সেবা
             </a>
-            <a href="#contact" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg">
+            <a href="#contact" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base">
               যোগাযোগ
             </a>
-            <a href="#about" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-lg">
+            <a href="#about" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base">
               About
             </a>
           </nav>
@@ -92,9 +88,9 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
           <div className="flex items-center">
             <Button
               onClick={handleWhatsAppClick}
-              className="hidden md:flex bg-green-500 hover:bg-green-600 text-white rounded-full px-4 md:px-6 py-2 md:py-3 font-semibold transition-all duration-300 items-center gap-2"
+              className="hidden md:flex bg-green-500 hover:bg-green-600 text-white rounded-full px-4 md:px-5 py-2 md:py-2.5 font-semibold transition-all duration-300 items-center gap-2 text-sm"
             >
-              <MessageCircle className="h-4 w-4 md:h-5 md:w-5" />
+              <MessageCircle className="h-4 w-4" />
               <span className="hidden lg:inline">WhatsApp</span>
             </Button>
 
@@ -103,18 +99,18 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
               <Button
                 onClick={handleWhatsAppClick}
                 size="icon"
-                className="bg-green-500 hover:bg-green-600 text-white rounded-full w-10 h-10"
+                className="bg-green-500 hover:bg-green-600 text-white rounded-full w-9 h-9"
               >
-                <MessageCircle className="h-5 w-5" />
+                <MessageCircle className="h-4 w-4" />
               </Button>
 
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="hover:bg-white/30 backdrop-blur-sm rounded-full w-10 h-10"
+                className="hover:bg-white/30 backdrop-blur-sm rounded-full w-9 h-9"
               >
-                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
               </Button>
             </div>
 
@@ -123,33 +119,33 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="hidden md:flex lg:hidden hover:bg-white/30 backdrop-blur-sm rounded-full w-12 h-12 ml-2"
+              className="hidden md:flex lg:hidden hover:bg-white/30 backdrop-blur-sm rounded-full w-10 h-10 ml-2"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile/Tablet Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden backdrop-blur-2xl bg-white/95 border-t border-white/30 rounded-b-3xl mt-2">
-            <div className="container mx-auto px-4 md:px-6 py-4 md:py-6 space-y-3 md:space-y-4">
+          <div className="lg:hidden backdrop-blur-2xl bg-white/95 border-t border-white/30 rounded-b-2xl mt-1">
+            <div className="container mx-auto px-3 md:px-4 py-3 md:py-4 space-y-2 md:space-y-3">
               <a 
                 href="#home" 
-                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg"
+                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </a>
               
               <div>
-                <span className="block text-gray-800 font-semibold mb-2 md:mb-3 text-lg">ক্যাটাগরি</span>
-                <div className="pl-4 space-y-2 md:space-y-3">
+                <span className="block text-gray-800 font-semibold mb-2 text-base">ক্যাটাগরি</span>
+                <div className="pl-3 space-y-2">
                   {categories.map((category) => (
                     <a
                       key={category.name}
                       href={category.href}
-                      className="block text-gray-700 hover:text-[#FFA300] transition-colors font-medium"
+                      className="block text-gray-700 hover:text-[#FFA300] transition-colors font-medium cursor-pointer"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {category.name}
@@ -160,21 +156,21 @@ export const Header: React.FC<HeaderProps> = ({ onBasketClick }) => {
               
               <a 
                 href="#what-we-offer" 
-                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg"
+                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 সেবা
               </a>
               <a 
                 href="#contact" 
-                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg"
+                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 যোগাযোগ
               </a>
               <a 
                 href="#about" 
-                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-lg"
+                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About

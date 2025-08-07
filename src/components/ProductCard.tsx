@@ -1,15 +1,16 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, Star } from 'lucide-react';
+import { ShoppingCart, Star, Eye } from 'lucide-react';
 import { Product } from '../types/Product';
 
 interface ProductCardProps {
   product: Product;
   onAddToBasket: (product: Product) => void;
+  onQuickView: (product: Product) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToBasket }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToBasket, onQuickView }) => {
   return (
     <div className="group relative bg-white/80 backdrop-blur-sm rounded-3xl border-2 border-white/40 p-6 hover:shadow-2xl hover:bg-white/95 transition-all duration-500 transform hover:-translate-y-3 hover:scale-[1.02] overflow-hidden">
       {/* Background decoration */}
@@ -29,13 +30,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToBasket
           <img 
             src={product.image} 
             alt={product.name}
-            className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
-            style={{ imageRendering: 'crisp-edges' }}
+            className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500 cursor-pointer"
+            onClick={() => onQuickView(product)}
           />
         </div>
         
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+        {/* Quick View Overlay */}
+        <div 
+          className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl flex items-center justify-center cursor-pointer"
+          onClick={() => onQuickView(product)}
+        >
+          <div className="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            <Eye className="h-6 w-6 text-gray-700" />
+          </div>
+        </div>
       </div>
       
       {/* Product Info */}
@@ -61,9 +69,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToBasket
             <ShoppingCart className="h-5 w-5 group-hover/btn:scale-125 transition-transform duration-300 relative z-10" />
           </Button>
         </div>
-
-        {/* Bottom accent line */}
-        <div className="h-1 bg-gradient-to-r from-transparent via-[#FFA300]/50 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
     </div>
   );

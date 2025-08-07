@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Product } from '../types/Product';
 import { ProductCard } from './ProductCard';
+import { QuickViewModal } from './QuickViewModal';
+import { toast } from '@/hooks/use-toast';
 
 interface ProductGridProps {
   onAddToBasket: (product: Product) => void;
@@ -23,6 +25,8 @@ const mockProducts: Product[] = [
 export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('name');
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
 
   const filteredProducts = mockProducts.filter(product => 
     selectedCategory === 'all' || product.category === selectedCategory
@@ -33,6 +37,29 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
     if (sortBy === 'price-high') return b.price - a.price;
     return a.name.localeCompare(b.name);
   });
+
+  const handleQuickView = (product: Product) => {
+    setQuickViewProduct(product);
+    setIsQuickViewOpen(true);
+  };
+
+  const handleQuickViewAddToCart = (product: Product, quantity: number) => {
+    for (let i = 0; i < quantity; i++) {
+      onAddToBasket(product);
+    }
+    toast({
+      title: "ঝুড়িতে যোগ করা হয়েছে",
+      description: `${product.name} (${quantity}টি) আপনার ঝুড়িতে যোগ করা হয়েছে`,
+    });
+  };
+
+  const categories = [
+    { value: 'all', label: 'All Categories' },
+    { value: 'smartphone', label: 'Smartphone' },
+    { value: 'laptop', label: 'Laptop' },
+    { value: 'accessories', label: 'Accessories' },
+    { value: 'components', label: 'Components' },
+  ];
 
   return (
     <section id="products" className="py-20 relative">
@@ -54,8 +81,27 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
           </p>
         </div>
 
-        {/* Enhanced Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-12 justify-center items-center">
+        {/* Mobile Horizontal Filter Buttons */}
+        <div className="block md:hidden mb-8">
+          <div className="flex gap-3 overflow-x-auto pb-4 px-2">
+            {categories.map((category) => (
+              <Button
+                key={category.value}
+                onClick={() => setSelectedCategory(category.value)}
+                className={`flex-shrink-0 w-32 h-12 rounded-xl font-bold text-sm transition-all duration-300 ${
+                  selectedCategory === category.value
+                    ? 'bg-gradient-to-r from-[#FFA300] to-[#FF8C00] text-white shadow-lg'
+                    : 'bg-white/95 backdrop-blur-sm border-2 border-[#FFA300]/40 hover:border-[#FFA300]/70 text-gray-800 hover:bg-gray-50'
+                }`}
+              >
+                {category.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Filters */}
+        <div className="hidden md:flex flex-col md:flex-row gap-4 mb-12 justify-center items-center">
           <div className="relative">
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
               <SelectTrigger className="w-full md:w-56 h-12 sm:h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/40 hover:border-[#FFA300]/70 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-base sm:text-lg text-gray-800">
@@ -92,6 +138,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
               key={product.id}
               product={product}
               onAddToBasket={onAddToBasket}
+              onQuickView={handleQuickView}
             />
           ))}
         </div>
@@ -104,6 +151,14 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
             <div className="w-2 h-2 bg-[#FF8C00] rounded-full animate-pulse"></div>
           </div>
         </div>
+
+        {/* Quick View Modal */}
+        <QuickViewModal
+          product={quickViewProduct}
+          isOpen={isQuickViewOpen}
+          onClose={() => setIsQuickViewOpen(false)}
+          onAddToBasket={handleQuickViewAddToCart}
+        />
       </div>
     </section>
   );

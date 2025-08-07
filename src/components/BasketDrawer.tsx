@@ -1,9 +1,10 @@
+
 import React, { useState } from 'react';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Minus, Plus, Trash2, ShoppingBag, Package } from 'lucide-react';
+import { Minus, Plus, Trash2, ShoppingBag, Package, X } from 'lucide-react';
 import { Product } from '../types/Product';
 import { toast } from '@/hooks/use-toast';
 
@@ -54,16 +55,25 @@ export const BasketDrawer: React.FC<BasketDrawerProps> = ({
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-full sm:max-w-lg md:max-w-xl bg-white border-l border-gray-300 overflow-y-auto font-anek-bangla">
-        <SheetHeader className="pb-6 border-b border-gray-200 sticky top-0 bg-white z-50 pt-4">
-          <SheetTitle className="text-2xl font-bold flex items-center text-gray-900 font-anek-bangla">
+        {/* Custom Header with Close Button */}
+        <div className="pb-6 border-b border-gray-200 sticky top-0 bg-white z-50 pt-4">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-[#FFA300]/20 rounded-xl">
                 <ShoppingBag className="h-6 w-6 text-[#FFA300]" />
               </div>
-              <span className="font-anek-bangla">Shopping ঝুড়ি</span>
+              <h2 className="text-2xl font-bold text-gray-900 font-anek-bangla">Shopping ঝুড়ি</h2>
             </div>
-          </SheetTitle>
-        </SheetHeader>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onClose}
+              className="h-10 w-10 rounded-full hover:bg-gray-100 flex-shrink-0"
+            >
+              <X className="h-5 w-5 text-gray-600" />
+            </Button>
+          </div>
+        </div>
 
         <div className="flex flex-col pt-6 space-y-6">
           {/* Items List */}
@@ -84,12 +94,12 @@ export const BasketDrawer: React.FC<BasketDrawerProps> = ({
                       <img 
                         src={item.image} 
                         alt={item.name}
-                        className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl bg-white border-2 border-gray-300"
+                        className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-xl bg-white border-2 border-gray-300 p-2"
                       />
                     </div>
                     
                     <div className="flex-1 min-w-0 space-y-2">
-                      <h4 className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg leading-tight font-anek-bangla break-words">
+                      <h4 className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg leading-tight font-anek-bangla break-words line-clamp-2">
                         {item.name}
                       </h4>
                       <div className="space-y-1">

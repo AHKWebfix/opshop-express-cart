@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -51,7 +50,7 @@ export const Header: React.FC = () => {
     <header className="fixed top-2 left-2 right-2 md:top-3 md:left-3 md:right-3 lg:top-4 lg:left-4 lg:right-4 z-50 font-anek-bangla">
       <div className={`backdrop-blur-2xl border border-white/50 rounded-2xl shadow-2xl transition-all duration-500 ${
         scrolled 
-          ? 'bg-white/85 shadow-lg border-gray-200/50 backdrop-blur-3xl' 
+          ? 'bg-white/95 shadow-xl border-gray-200/60 backdrop-blur-3xl' 
           : 'bg-white shadow-white/20 border-white/60'
       }`}>
         <div className="container mx-auto px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-2.5 flex items-center justify-between">
@@ -76,7 +75,7 @@ export const Header: React.FC = () => {
                 className="flex items-center text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base"
                 onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
               >
-                ক্যাটাগরি <ChevronDown className="ml-1 h-4 w-4" />
+                Products <ChevronDown className="ml-1 h-4 w-4" />
               </button>
               
               {isCategoriesOpen && (
@@ -168,7 +167,7 @@ export const Header: React.FC = () => {
               </button>
               
               <div>
-                <span className="block text-gray-800 font-semibold mb-2 text-base">ক্যাটাগরি</span>
+                <span className="block text-gray-800 font-semibold mb-2 text-base">Products</span>
                 <div className="pl-3 space-y-2">
                   {categories.map((category) => (
                     <button

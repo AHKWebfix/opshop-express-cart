@@ -30,7 +30,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
     setCurrentImageIndex(0);
   };
 
-  const productImages = product.images || [product.image];
+  // Limit to maximum 5 images
+  const productImages = (product.images || [product.image]).slice(0, 5);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % productImages.length);
@@ -42,31 +43,31 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-[90vw] sm:w-[85vw] md:w-[80vw] mx-auto max-h-[90vh] overflow-y-auto font-anek-bangla p-0 rounded-2xl shadow-2xl">
-        <DialogHeader className="relative p-4 md:p-5 border-b border-gray-200">
+      <DialogContent className="max-w-3xl w-[90vw] sm:w-[85vw] md:w-[75vw] mx-auto max-h-[85vh] overflow-y-auto font-anek-bangla p-0 rounded-2xl shadow-2xl">
+        <DialogHeader className="relative p-3 md:p-4 border-b border-gray-200">
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-3 top-3 h-8 w-8 rounded-full hover:bg-gray-100 z-10"
+            className="absolute right-2 top-2 h-8 w-8 rounded-full hover:bg-gray-100 z-10"
           >
             <X className="h-4 w-4" />
           </Button>
-          <DialogTitle className="text-lg md:text-xl font-bold text-gray-900 pr-10 text-left">
+          <DialogTitle className="text-base md:text-lg font-bold text-gray-900 pr-10 text-left">
             {product.name}
           </DialogTitle>
         </DialogHeader>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 p-4 md:p-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 p-3 md:p-4">
           {/* Product Images */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             {/* Main Image */}
             <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl overflow-hidden border-2 border-[#FFA300]">
               <div className="absolute inset-2 bg-white rounded-lg overflow-hidden shadow-md flex items-center justify-center">
                 <img 
                   src={productImages[currentImageIndex]} 
                   alt={`${product.name} - Image ${currentImageIndex + 1}`}
-                  className="max-w-full max-h-full object-contain p-3"
+                  className="max-w-full max-h-full object-contain p-2"
                 />
               </div>
               
@@ -77,25 +78,25 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                     variant="ghost"
                     size="icon"
                     onClick={prevImage}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full h-8 w-8 shadow-md"
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full h-7 w-7 shadow-md"
                   >
-                    <ChevronLeft className="h-4 w-4" />
+                    <ChevronLeft className="h-3 w-3" />
                   </Button>
                   
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={nextImage}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full h-8 w-8 shadow-md"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full h-7 w-7 shadow-md"
                   >
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-3 w-3" />
                   </Button>
                 </>
               )}
 
               {/* Image Counter */}
               {productImages.length > 1 && (
-                <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
                   {currentImageIndex + 1} / {productImages.length}
                 </div>
               )}
@@ -103,12 +104,12 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             
             {/* Thumbnail Images */}
             {productImages.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1">
+              <div className="flex gap-1 overflow-x-auto pb-1">
                 {productImages.map((img, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-lg border-2 overflow-hidden transition-all duration-300 ${
+                    className={`flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 overflow-hidden transition-all duration-300 ${
                       currentImageIndex === index 
                         ? 'border-[#FFA300] shadow-md' 
                         : 'border-gray-200 hover:border-[#FFA300]/60'
@@ -126,25 +127,25 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
           </div>
 
           {/* Product Details */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div>
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3 leading-tight">
+              <h1 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 leading-tight">
                 {product.name}
               </h1>
               
-              <div className="space-y-1 mb-3 md:mb-4">
+              <div className="space-y-1 mb-3">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl md:text-3xl font-bold text-[#FFA300]">
+                  <span className="text-xl md:text-2xl font-bold text-[#FFA300]">
                     ৳{product.price.toLocaleString()}
                   </span>
-                  <span className="text-sm md:text-base text-gray-500 font-medium">BDT</span>
+                  <span className="text-sm text-gray-500 font-medium">BDT</span>
                 </div>
               </div>
 
               {/* Product Description */}
-              <div className="bg-gray-50 rounded-xl p-3 md:p-4 mb-3 md:mb-4">
-                <h3 className="font-bold text-sm md:text-base text-gray-900 mb-1 md:mb-2">বিবরণ</h3>
-                <p className="text-gray-700 leading-relaxed text-xs md:text-sm">
+              <div className="bg-gray-50 rounded-xl p-3 mb-3">
+                <h3 className="font-bold text-sm md:text-base text-gray-900 mb-2">বিবরণ</h3>
+                <p className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg">
                   এটি একটি প্রিমিয়াম মানের প্রোডাক্ট যা আধুনিক প্রযুক্তি এবং উন্নত ফিচারের সাথে আসে। 
                   দীর্ঘস্থায়ী এবং নির্ভরযোগ্য পারফরম্যান্সের জন্য এটি বিশেষভাবে ডিজাইন করা হয়েছে।
                 </p>
@@ -152,7 +153,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             </div>
 
             {/* Quantity Selector */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <div>
                 <label className="block text-sm md:text-base font-bold text-gray-900 mb-2">পরিমাণ</label>
                 <div className="flex items-center space-x-2 bg-white rounded-lg p-2 border-2 border-gray-300 w-fit">
@@ -165,7 +166,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                     <Minus className="h-3 w-3" />
                   </Button>
                   
-                  <span className="w-8 text-center font-bold text-base md:text-lg text-gray-900">
+                  <span className="w-8 text-center font-bold text-base text-gray-900">
                     {quantity}
                   </span>
                   
@@ -183,7 +184,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
               {/* Add to Cart Button */}
               <Button
                 onClick={handleAddToCart}
-                className="w-full bg-gradient-to-r from-[#FFA300] to-[#FF8C00] hover:from-[#FF8C00] hover:to-[#FF7A00] text-white py-2.5 md:py-3 text-sm md:text-base font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full bg-gradient-to-r from-[#FFA300] to-[#FF8C00] hover:from-[#FF8C00] hover:to-[#FF7A00] text-white py-2 md:py-2.5 text-sm md:text-base font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <ShoppingCart className="h-3 w-3 md:h-4 md:w-4 mr-2" />
                 ঝুড়িতে যোগ করুন • ৳{(product.price * quantity).toLocaleString()}

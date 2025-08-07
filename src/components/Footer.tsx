@@ -1,9 +1,6 @@
-
 import React from 'react';
-
 export const Footer = () => {
-  return (
-    <footer className="backdrop-blur-xl bg-gradient-to-br from-slate-100/80 via-gray-50/70 to-white/60 border-t-2 border-white/40 py-20 font-anek-bangla relative">
+  return <footer className="backdrop-blur-xl bg-gradient-to-br from-slate-100/80 via-gray-50/70 to-white/60 border-t-2 border-white/40 py-20 font-anek-bangla relative">
       {/* Footer specific background */}
       <div className="absolute inset-0 bg-gradient-to-r from-slate-200/30 via-white/40 to-gray-200/20"></div>
       <div className="absolute top-10 left-1/4 w-64 h-64 bg-gradient-to-br from-slate-300/15 to-transparent rounded-full blur-3xl"></div>
@@ -25,9 +22,7 @@ export const Footer = () => {
                 <p className="text-gray-700 leading-relaxed text-lg">
                   আপনার বিশ্বস্ত গ্যাজেট এবং ডিজিটাল এক্সেসরিজের জন্য নির্ভরযোগ্য পার্টনার।
                 </p>
-                <p className="text-gray-600 leading-relaxed">
-                  Your trusted partner for original gadgets and digital accessories with premium quality and affordable prices.
-                </p>
+                
                 <div className="bg-gradient-to-r from-[#FFA300]/10 to-[#FF8C00]/5 rounded-xl p-4 border border-[#FFA300]/20">
                   <p className="font-bold text-[#FFA300] text-xl">
                     সহজ Shopping। সুখী Life।
@@ -72,18 +67,12 @@ export const Footer = () => {
           <div className="text-center">
             <p className="text-gray-600">
               Design & Developed by{' '}
-              <a 
-                href="https://ahasan.online" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[#FFA300] hover:text-[#FF8C00] font-semibold transition-colors duration-300 hover:underline"
-              >
+              <a href="https://ahasan.online" target="_blank" rel="noopener noreferrer" className="text-[#FFA300] hover:text-[#FF8C00] font-semibold transition-colors duration-300 hover:underline">
                 Ahasanul Haque Khul
               </a>
             </p>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };

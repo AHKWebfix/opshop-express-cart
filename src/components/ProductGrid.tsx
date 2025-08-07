@@ -11,15 +11,27 @@ interface ProductGridProps {
   onAddToBasket: (product: Product) => void;
 }
 
+// All product images
+const allProductImages = [
+  'https://adminapi.applegadgetsbd.com/storage/media/large/iPhone-15-Plus-(2)-(6)-5363.jpg',
+  'https://adminapi.applegadgetsbd.com/storage/media/large/MacBook-Air-M2-13.6-inch-8256GB-space-gray-6746.jpg',
+  'https://www.tct.com.bd/wp-content/uploads/2022/04/MWP22_720x-600x600.jpg',
+  'https://gadgetbd.com/wp-content/uploads/2024/01/Samsung-S24-Ultra-Titanium-Grey.jpg',
+  'https://adminapi.applegadgetsbd.com/storage/media/large/Dell-XPS-13-Plus-9320-a-6750.jpg',
+  'https://img.drz.lazcdn.com/static/bd/p/584abc3e8733dfad817521bbe7253ef0.jpg_720x720q80.jpg_.jpg',
+  'https://smartbd.com/wp-content/uploads/2024/09/GeForce-RTX%E2%84%A2-4070-SUPER-GAMING-OC-12G.jpg',
+  'https://www.startech.com.bd/image/cache/catalog/keyboard/havit/gamenote-kb893l/gamenote-kb893l-01-500x500.webp'
+];
+
 const mockProducts: Product[] = [
-  { id: '1', name: 'iPhone 15 Pro', price: 109890, image: 'https://adminapi.applegadgetsbd.com/storage/media/large/iPhone-15-Plus-(2)-(6)-5363.jpg', category: 'smartphone' },
-  { id: '2', name: 'MacBook Air M2', price: 142890, image: 'https://adminapi.applegadgetsbd.com/storage/media/large/MacBook-Air-M2-13.6-inch-8256GB-space-gray-6746.jpg', category: 'laptop' },
-  { id: '3', name: 'AirPods Pro', price: 27390, image: 'https://www.tct.com.bd/wp-content/uploads/2022/04/MWP22_720x-600x600.jpg', category: 'accessories' },
-  { id: '4', name: 'Samsung Galaxy S24', price: 98890, image: 'https://gadgetbd.com/wp-content/uploads/2024/01/Samsung-S24-Ultra-Titanium-Grey.jpg', category: 'smartphone' },
-  { id: '5', name: 'Dell XPS 13', price: 131890, image: 'https://adminapi.applegadgetsbd.com/storage/media/large/Dell-XPS-13-Plus-9320-a-6750.jpg', category: 'laptop' },
-  { id: '6', name: 'Wireless Mouse', price: 8690, image: 'https://img.drz.lazcdn.com/static/bd/p/584abc3e8733dfad817521bbe7253ef0.jpg_720x720q80.jpg_.jpg', category: 'accessories' },
-  { id: '7', name: 'RTX 4070 Graphics Card', price: 65890, image: 'https://smartbd.com/wp-content/uploads/2024/09/GeForce-RTX%E2%84%A2-4070-SUPER-GAMING-OC-12G.jpg', category: 'components' },
-  { id: '8', name: 'Gaming Keyboard', price: 17490, image: 'https://www.startech.com.bd/image/cache/catalog/keyboard/havit/gamenote-kb893l/gamenote-kb893l-01-500x500.webp', category: 'accessories' },
+  { id: '1', name: 'iPhone 15 Pro', price: 109890, image: allProductImages[0], category: 'smartphone', images: allProductImages },
+  { id: '2', name: 'MacBook Air M2', price: 142890, image: allProductImages[1], category: 'laptop', images: allProductImages },
+  { id: '3', name: 'AirPods Pro', price: 27390, image: allProductImages[2], category: 'accessories', images: allProductImages },
+  { id: '4', name: 'Samsung Galaxy S24', price: 98890, image: allProductImages[3], category: 'smartphone', images: allProductImages },
+  { id: '5', name: 'Dell XPS 13', price: 131890, image: allProductImages[4], category: 'laptop', images: allProductImages },
+  { id: '6', name: 'Wireless Mouse', price: 8690, image: allProductImages[5], category: 'accessories', images: allProductImages },
+  { id: '7', name: 'RTX 4070 Graphics Card', price: 65890, image: allProductImages[6], category: 'components', images: allProductImages },
+  { id: '8', name: 'Gaming Keyboard', price: 17490, image: allProductImages[7], category: 'accessories', images: allProductImages },
 ];
 
 export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
@@ -81,22 +93,32 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
           </p>
         </div>
 
-        {/* Mobile Horizontal Filter Buttons */}
+        {/* Mobile Dropdown Filter */}
         <div className="block md:hidden mb-8">
-          <div className="flex gap-3 overflow-x-auto pb-4 px-2">
-            {categories.map((category) => (
-              <Button
-                key={category.value}
-                onClick={() => setSelectedCategory(category.value)}
-                className={`flex-shrink-0 w-32 h-12 rounded-xl font-bold text-sm transition-all duration-300 ${
-                  selectedCategory === category.value
-                    ? 'bg-gradient-to-r from-[#FFA300] to-[#FF8C00] text-white shadow-lg'
-                    : 'bg-white/95 backdrop-blur-sm border-2 border-[#FFA300]/40 hover:border-[#FFA300]/70 text-gray-800 hover:bg-gray-50'
-                }`}
-              >
-                {category.label}
-              </Button>
-            ))}
+          <div className="flex flex-col gap-3">
+            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <SelectTrigger className="w-full h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/60 hover:border-[#FFA300]/80 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-lg text-gray-800">
+                <SelectValue placeholder="Select Category" />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl border-2 border-gray-200 shadow-xl bg-white z-50">
+                {categories.map((category) => (
+                  <SelectItem key={category.value} value={category.value} className="rounded-lg font-semibold text-base py-3">
+                    {category.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select value={sortBy} onValueChange={setSortBy}>
+              <SelectTrigger className="w-full h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/60 hover:border-[#FFA300]/80 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-lg text-gray-800">
+                <SelectValue placeholder="Sort By" />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl border-2 border-gray-200 shadow-xl bg-white z-50">
+                <SelectItem value="name" className="rounded-lg font-semibold text-base py-3">Price</SelectItem>
+                <SelectItem value="price-low" className="rounded-lg font-semibold text-base py-3">Price: Low to High</SelectItem>
+                <SelectItem value="price-high" className="rounded-lg font-semibold text-base py-3">Price: High to Low</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
@@ -104,25 +126,25 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {
         <div className="hidden md:flex flex-col md:flex-row gap-4 mb-12 justify-center items-center">
           <div className="relative">
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-full md:w-56 h-12 sm:h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/40 hover:border-[#FFA300]/70 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-base sm:text-lg text-gray-800">
+              <SelectTrigger className="w-full md:w-56 h-12 sm:h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/60 hover:border-[#FFA300]/80 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-base sm:text-lg text-gray-800">
                 <SelectValue placeholder="Select Category" />
               </SelectTrigger>
-              <SelectContent className="rounded-xl border-2 border-gray-200 shadow-xl">
-                <SelectItem value="all" className="rounded-lg font-semibold text-base">All Categories</SelectItem>
-                <SelectItem value="smartphone" className="rounded-lg font-semibold text-base">Smartphone</SelectItem>
-                <SelectItem value="laptop" className="rounded-lg font-semibold text-base">Laptop</SelectItem>
-                <SelectItem value="accessories" className="rounded-lg font-semibold text-base">Accessories</SelectItem>
-                <SelectItem value="components" className="rounded-lg font-semibold text-base">Components</SelectItem>
+              <SelectContent className="rounded-xl border-2 border-gray-200 shadow-xl bg-white z-50">
+                {categories.map((category) => (
+                  <SelectItem key={category.value} value={category.value} className="rounded-lg font-semibold text-base">
+                    {category.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
 
           <div className="relative">
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-full md:w-56 h-12 sm:h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/40 hover:border-[#FFA300]/70 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-base sm:text-lg text-gray-800">
+              <SelectTrigger className="w-full md:w-56 h-12 sm:h-14 bg-white/95 backdrop-blur-sm border-3 border-[#FFA300]/60 hover:border-[#FFA300]/80 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl font-bold text-base sm:text-lg text-gray-800">
                 <SelectValue placeholder="Sort By" />
               </SelectTrigger>
-              <SelectContent className="rounded-xl border-2 border-gray-200 shadow-xl">
+              <SelectContent className="rounded-xl border-2 border-gray-200 shadow-xl bg-white z-50">
                 <SelectItem value="name" className="rounded-lg font-semibold text-base">Price</SelectItem>
                 <SelectItem value="price-low" className="rounded-lg font-semibold text-base">Price: Low to High</SelectItem>
                 <SelectItem value="price-high" className="rounded-lg font-semibold text-base">Price: High to Low</SelectItem>

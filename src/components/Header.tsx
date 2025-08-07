@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -94,12 +95,6 @@ export const Header: React.FC = () => {
             </div>
             
             <button
-              onClick={() => handleNavClick('#what-we-offer')}
-              className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base cursor-pointer"
-            >
-              সেবা
-            </button>
-            <button
               onClick={() => handleNavClick('#contact')}
               className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base cursor-pointer"
             >
@@ -181,12 +176,6 @@ export const Header: React.FC = () => {
                 </div>
               </div>
               
-              <button 
-                onClick={() => handleNavClick('#what-we-offer')}
-                className="block w-full text-left text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base cursor-pointer"
-              >
-                সেবা
-              </button>
               <button 
                 onClick={() => handleNavClick('#contact')}
                 className="block w-full text-left text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base cursor-pointer"

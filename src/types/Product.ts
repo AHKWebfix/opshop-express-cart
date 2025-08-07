@@ -5,4 +5,5 @@ export interface Product {
   price: number;
   image: string;
   category: 'smartphone' | 'laptop' | 'accessories' | 'components';
+  images?: string[];
 }

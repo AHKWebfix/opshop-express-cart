@@ -10,14 +10,14 @@ interface ProductGridProps {
 }
 
 const mockProducts: Product[] = [
-  { id: '1', name: 'iPhone 15 Pro', price: 999, image: '/placeholder.svg', category: 'smartphone' },
-  { id: '2', name: 'MacBook Air M2', price: 1299, image: '/placeholder.svg', category: 'laptop' },
-  { id: '3', name: 'AirPods Pro', price: 249, image: '/placeholder.svg', category: 'accessories' },
-  { id: '4', name: 'Samsung Galaxy S24', price: 899, image: '/placeholder.svg', category: 'smartphone' },
-  { id: '5', name: 'Dell XPS 13', price: 1199, image: '/placeholder.svg', category: 'laptop' },
-  { id: '6', name: 'Wireless Mouse', price: 79, image: '/placeholder.svg', category: 'accessories' },
-  { id: '7', name: 'RTX 4070 Graphics Card', price: 599, image: '/placeholder.svg', category: 'components' },
-  { id: '8', name: 'Gaming Keyboard', price: 159, image: '/placeholder.svg', category: 'accessories' },
+  { id: '1', name: 'iPhone 15 Pro', price: 109890, image: 'https://adminapi.applegadgetsbd.com/storage/media/large/iPhone-15-Plus-(2)-(6)-5363.jpg', category: 'smartphone' },
+  { id: '2', name: 'MacBook Air M2', price: 142890, image: 'https://adminapi.applegadgetsbd.com/storage/media/large/MacBook-Air-M2-13.6-inch-8256GB-space-gray-6746.jpg', category: 'laptop' },
+  { id: '3', name: 'AirPods Pro', price: 27390, image: 'https://www.tct.com.bd/wp-content/uploads/2022/04/MWP22_720x-600x600.jpg', category: 'accessories' },
+  { id: '4', name: 'Samsung Galaxy S24', price: 98890, image: 'https://gadgetbd.com/wp-content/uploads/2024/01/Samsung-S24-Ultra-Titanium-Grey.jpg', category: 'smartphone' },
+  { id: '5', name: 'Dell XPS 13', price: 131890, image: 'https://m.media-amazon.com/images/I/710EGJBdIML._AC_SL1500_.jpg', category: 'laptop' },
+  { id: '6', name: 'Wireless Mouse', price: 8690, image: 'https://img.drz.lazcdn.com/static/bd/p/584abc3e8733dfad817521bbe7253ef0.jpg_720x720q80.jpg_.jpg', category: 'accessories' },
+  { id: '7', name: 'RTX 4070 Graphics Card', price: 65890, image: 'https://smartbd.com/wp-content/uploads/2024/09/GeForce-RTX%E2%84%A2-4070-SUPER-GAMING-OC-12G.jpg', category: 'components' },
+  { id: '8', name: 'Gaming Keyboard', price: 17490, image: 'https://www.startech.com.bd/image/cache/catalog/keyboard/havit/gamenote-kb893l/gamenote-kb893l-01-500x500.webp', category: 'accessories' },
 ];
 
 export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToBasket }) => {

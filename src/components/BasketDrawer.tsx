@@ -28,10 +28,7 @@ export const BasketDrawer: React.FC<BasketDrawerProps> = ({
     address: '',
   });
 
-  // Convert USD to BDT (approximate rate: 1 USD = 110 BDT)
-  const convertToBDT = (usdPrice: number) => Math.round(usdPrice * 110);
-
-  const total = items.reduce((sum, item) => sum + convertToBDT(item.price) * item.quantity, 0);
+  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const deliveryFee = deliveryArea === 'inside-dhaka' ? 60 : 120;
   const finalTotal = total + deliveryFee;
 
@@ -58,8 +55,8 @@ export const BasketDrawer: React.FC<BasketDrawerProps> = ({
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-full sm:max-w-lg md:max-w-xl bg-white border-l border-gray-300 overflow-y-auto font-anek-bangla">
-        <SheetHeader className="pb-6 border-b border-gray-200 sticky top-0 bg-white z-10">
-          <SheetTitle className="text-2xl font-bold flex items-center gap-3 text-gray-900">
+        <SheetHeader className="pb-6 border-b border-gray-200 sticky top-0 bg-white z-20 pt-4">
+          <SheetTitle className="text-2xl font-bold flex items-center gap-3 text-gray-900 font-anek-bangla">
             <div className="p-3 bg-[#FFA300]/20 rounded-xl">
               <ShoppingBag className="h-6 w-6 text-[#FFA300]" />
             </div>
@@ -92,8 +89,8 @@ export const BasketDrawer: React.FC<BasketDrawerProps> = ({
                     
                     <div className="flex-1 min-w-0">
                       <h4 className="font-bold text-gray-900 text-lg leading-tight mb-2 font-anek-bangla">{item.name}</h4>
-                      <p className="text-[#FFA300] font-bold text-xl font-anek-bangla">৳{convertToBDT(item.price).toLocaleString()}</p>
-                      <p className="text-gray-800 text-lg font-semibold font-anek-bangla">মোট: <span className="text-gray-900 font-bold">৳{(convertToBDT(item.price) * item.quantity).toLocaleString()}</span></p>
+                      <p className="text-[#FFA300] font-bold text-xl font-anek-bangla">৳{item.price.toLocaleString()}</p>
+                      <p className="text-gray-800 text-lg font-semibold font-anek-bangla">মোট: <span className="text-gray-900 font-bold">৳{(item.price * item.quantity).toLocaleString()}</span></p>
                     </div>
                     
                     <div className="flex flex-col items-center space-y-3">
@@ -148,8 +145,8 @@ export const BasketDrawer: React.FC<BasketDrawerProps> = ({
                       <SelectValue placeholder="ডেলিভারি এলাকা নির্বাচন করুন" />
                     </SelectTrigger>
                     <SelectContent className="font-anek-bangla">
-                      <SelectItem value="inside-dhaka" className="text-lg font-semibold">ঢাকার ভিতরে (৳৬০)</SelectItem>
-                      <SelectItem value="outside-dhaka" className="text-lg font-semibold">ঢাকার বাইরে (৳১২০)</SelectItem>
+                      <SelectItem value="inside-dhaka" className="text-lg font-semibold font-anek-bangla">ঢাকার ভিতরে (৳৬০)</SelectItem>
+                      <SelectItem value="outside-dhaka" className="text-lg font-semibold font-anek-bangla">ঢাকার বাইরে (৳১২০)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

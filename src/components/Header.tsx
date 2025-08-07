@@ -18,14 +18,33 @@ export const Header: React.FC = () => {
   }, []);
 
   const categories = [
-    { name: 'Smartphone', href: '#smartphone' },
-    { name: 'Laptop', href: '#laptop' },
-    { name: 'Accessories', href: '#accessories' },
-    { name: 'Computer Components', href: '#computer-components' }
+    { name: 'Smartphone', href: '#products', filter: 'smartphone' },
+    { name: 'Laptop', href: '#products', filter: 'laptop' },
+    { name: 'Accessories', href: '#products', filter: 'accessories' },
+    { name: 'Computer Components', href: '#products', filter: 'components' }
   ];
+
+  const handleCategoryClick = (href: string, filter?: string) => {
+    setIsCategoriesOpen(false);
+    setIsMobileMenuOpen(false);
+    
+    // Scroll to products section
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/8801815913212', '_blank');
+  };
+
+  const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -45,9 +64,12 @@ export const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 absolute left-1/2 transform -translate-x-1/2">
-            <a href="#home" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base">
+            <button
+              onClick={() => handleNavClick('#home')}
+              className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base cursor-pointer"
+            >
               Home
-            </a>
+            </button>
             
             <div className="relative">
               <button
@@ -60,28 +82,36 @@ export const Header: React.FC = () => {
               {isCategoriesOpen && (
                 <div className="absolute top-full left-0 mt-2 backdrop-blur-2xl bg-[#FFA300]/95 border border-[#FFA300]/30 rounded-xl shadow-xl min-w-48 py-2 z-50">
                   {categories.map((category) => (
-                    <a
+                    <button
                       key={category.name}
-                      href={category.href}
-                      className="block px-4 py-2.5 text-white hover:text-gray-100 hover:bg-white/20 transition-colors font-medium cursor-pointer"
-                      onClick={() => setIsCategoriesOpen(false)}
+                      onClick={() => handleCategoryClick(category.href, category.filter)}
+                      className="block w-full text-left px-4 py-2.5 text-white hover:text-gray-100 hover:bg-white/20 transition-colors font-medium cursor-pointer"
                     >
                       {category.name}
-                    </a>
+                    </button>
                   ))}
                 </div>
               )}
             </div>
             
-            <a href="#what-we-offer" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base">
+            <button
+              onClick={() => handleNavClick('#what-we-offer')}
+              className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base cursor-pointer"
+            >
               সেবা
-            </a>
-            <a href="#contact" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base">
+            </button>
+            <button
+              onClick={() => handleNavClick('#contact')}
+              className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base cursor-pointer"
+            >
               যোগাযোগ
-            </a>
-            <a href="#about" className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base">
+            </button>
+            <button
+              onClick={() => handleNavClick('#about')}
+              className="text-gray-900 hover:text-[#FFA300] transition-colors font-semibold text-base cursor-pointer"
+            >
               About
-            </a>
+            </button>
           </nav>
 
           {/* Right Side - WhatsApp Button */}
@@ -130,51 +160,46 @@ export const Header: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden backdrop-blur-2xl bg-white/95 border-t border-gray-200/30 rounded-b-2xl mt-1">
             <div className="container mx-auto px-3 md:px-4 py-3 md:py-4 space-y-2 md:space-y-3">
-              <a 
-                href="#home" 
-                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button 
+                onClick={() => handleNavClick('#home')}
+                className="block w-full text-left text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base cursor-pointer"
               >
                 Home
-              </a>
+              </button>
               
               <div>
                 <span className="block text-gray-800 font-semibold mb-2 text-base">ক্যাটাগরি</span>
                 <div className="pl-3 space-y-2">
                   {categories.map((category) => (
-                    <a
+                    <button
                       key={category.name}
-                      href={category.href}
-                      className="block text-gray-700 hover:text-[#FFA300] transition-colors font-medium cursor-pointer"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={() => handleCategoryClick(category.href, category.filter)}
+                      className="block w-full text-left text-gray-700 hover:text-[#FFA300] transition-colors font-medium cursor-pointer"
                     >
                       {category.name}
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>
               
-              <a 
-                href="#what-we-offer" 
-                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button 
+                onClick={() => handleNavClick('#what-we-offer')}
+                className="block w-full text-left text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base cursor-pointer"
               >
                 সেবা
-              </a>
-              <a 
-                href="#contact" 
-                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('#contact')}
+                className="block w-full text-left text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base cursor-pointer"
               >
                 যোগাযোগ
-              </a>
-              <a 
-                href="#about" 
-                className="block text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('#about')}
+                className="block w-full text-left text-gray-800 hover:text-[#FFA300] transition-colors font-medium text-base cursor-pointer"
               >
                 About
-              </a>
+              </button>
             </div>
           </div>
         )}
